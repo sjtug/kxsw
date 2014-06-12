@@ -21,6 +21,7 @@ With so many methods to cross the wall, here we only discuss some effient and no
 **oagentG** is widely used in Mainland China, but it is severely interfered by wall since June 2014. At the same time, lots of VPNs are interfered and cannot work properly.  
 
 ### VPN  
+VPN combined with customized route tables such as [chnroutes - Scripts to generate special routes for china ips](https://code.google.com/p/chnroutes/) would be better.
 
 ### VPS  
 #### Shadowsocks  
