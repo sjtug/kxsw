@@ -1,5 +1,6 @@
 Get Through the Firewall in Scientific Method
 ====
+English is more safely for such kind of information, so Chinese written before is deprecated. Any supplements would be welcome. :)
 
 ## Free of Firewall  
 ### Google   
@@ -13,4 +14,6 @@ Get Through the Firewall in Scientific Method
 ###Google Scholar & Translate  
 1. [scholar.google.com.cn](http://scholar.google.com.cn/) is still available  
 2. [translate.google.cn](http://translate.google.cn/) is still available  
+
+## Get through the Wall in Scientific Method  
 
