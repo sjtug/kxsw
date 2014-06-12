@@ -5,7 +5,7 @@ English is more safely for such kind of information, so Chinese written before i
 ## Free of Firewall  
 ### Google   
 **Notice: Access Google by modifying hosts is time consuming and inefficient in nowadays.**  
-Access Google via **IPV6** with **https** is available now, but there are many other sites such as scholar.google.com cannot be accessed.  
+Access Google via **IPV6(hosts)** with **https** works now.
 
 1. [www.googlestable.com](http://www.googlestable.com)  A reverse Proxy for Google Search Enging, Captcha present if too much triffic generated.  
 2. [startpage.com](https://startpage.com) A private Search Engine enhanced by Google.  
