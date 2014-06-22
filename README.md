@@ -5,7 +5,7 @@ English is more safely for such kind of information, so Chinese written before i
 ## Free of Firewall  
 
 ### DNS resolution  
-* [openerdns-Github](https://github.com/openervpn/openerdns)
+* [openerdns-Github](https://github.com/openervpn/openerdns)  
 * [openerdns - OpenerDNS: 是面向中国普通互联网用户开放的"高速 安全 免费"的域名解析服务器](https://code.google.com/p/openerdns/)
 * [国内能用的靠谱DNS整理](http://www.houge.in/dns/)
 
