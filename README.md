@@ -39,3 +39,12 @@ VPN combined with customized route tables such as [chnroutes - Scripts to genera
 
 ### COW  
 [cow](https://github.com/cyfdecyf/cow), an Swiss Army Knife for simplifying your deployment with proxy. You can use many parent proxies for load balance, which would mitigate the interference by wall.
+
+### toolchain-Cache + Load Balance
+
+* [28 | 05月 | 2011 | 细节的力量](https://xijie.wordpress.com/2011/05/28/)  
+* [Polipo - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/Polipo)  
+* [Polipo — a caching web proxy](http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/)  
+* [jech/polipo](https://github.com/jech/polipo)  
+* [HAProxy - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/HAProxy)  
+* [HAProxy - The Reliable, High Performance TCP/HTTP Load Balancer](http://www.haproxy.org/)  
