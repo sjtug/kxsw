@@ -3,6 +3,12 @@ Get Through the Firewall in Scientific Method
 English is more safely for such kind of information, so Chinese written before is deprecated. Any supplements would be welcome. :)
 
 ## Free of Firewall  
+
+### DNS resolution  
+* [openerdns-Github](https://github.com/openervpn/openerdns)
+* [openerdns - OpenerDNS: 是面向中国普通互联网用户开放的"高速 安全 免费"的域名解析服务器](https://code.google.com/p/openerdns/)
+* [国内能用的靠谱DNS整理](http://www.houge.in/dns/)
+
 ### Google   
 **Notice: Access Google by modifying hosts is time consuming and inefficient in nowadays.**  
 Access Google via **IPV6(hosts)** with **https** works now.
@@ -42,9 +48,9 @@ VPN combined with customized route tables such as [chnroutes - Scripts to genera
 
 ### toolchain-Cache + Load Balance
 
-* [28 | 05月 | 2011 | 细节的力量](https://xijie.wordpress.com/2011/05/28/)  
-* [Polipo - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/Polipo)  
+* [squid3+polipo use sock5](https://xijie.wordpress.com/2011/05/28/)  
+* [Polipo - Wikipedia](http://en.wikipedia.org/wiki/Polipo)  
 * [Polipo — a caching web proxy](http://www.pps.univ-paris-diderot.fr/~jch/software/polipo/)  
 * [jech/polipo](https://github.com/jech/polipo)  
-* [HAProxy - Wikipedia, the free encyclopedia](http://en.wikipedia.org/wiki/HAProxy)  
+* [HAProxy - Wikipedia](http://en.wikipedia.org/wiki/HAProxy)  
 * [HAProxy - The Reliable, High Performance TCP/HTTP Load Balancer](http://www.haproxy.org/)  
