@@ -1,2 +1,2 @@
-Moved to [wiki](https://github.com/sjtug/kxsw/wiki)
+Please read [wiki](https://github.com/sjtug/kxsw/wiki) to get the latest methods.
 
