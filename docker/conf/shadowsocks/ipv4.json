@@ -1,0 +1,9 @@
+{
+        "server":"127.0.0.1",
+        "server_port":8880,
+        "local_address":"127.0.0.1",
+        "local_port":9080,
+        "password":"breakGFW!",
+        "timeout":60,
+        "method":"aes-256-cfb"
+}
