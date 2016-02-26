@@ -1,0 +1,7 @@
+---
+- name: install shadowsocks-libev
+  hosts: all
+  remote_user: root
+
+  roles:
+    - shadowsocks-libev
