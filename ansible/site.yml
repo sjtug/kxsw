@@ -1,7 +1,8 @@
 ---
 - name: install shadowsocks-libev
   hosts: all
-  remote_user: root
+  become: yes
+  become_method: sudo
 
   roles:
     - shadowsocks-libev

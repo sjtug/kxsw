@@ -1,2 +1,2 @@
 [server]
-testserver ansible_ssh_host=testserver ansible_ssh_port=22
+server_alias ansible_host=your_server_ip ansible_user=root_or_user_with_sudo ansible_port=22
