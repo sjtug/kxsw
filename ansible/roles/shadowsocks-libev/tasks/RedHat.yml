@@ -1,0 +1,11 @@
+---
+- name: Add repository for CentOS/RedHat
+  get_url: url=https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/epel-{{ ansible_distribution_major_version }}/librehat-shadowsocks-epel-{{ ansible_distribution_major_version }}.repo dest=/etc/yum.repos.d/ mode=0644
+  when: ansible_distribution != 'Fedora'
+
+- name: Add repository for Fedora
+  get_url: url=https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/fedora-{{ ansible_distribution_major_version }}/librehat-shadowsocks-fedora-{{ ansible_distribution_major_version }}.repo dest=/etc/yum.repos.d/ mode=0644
+  when: ansible_distribution == 'Fedora'
+
+- name: install shadowsocks-libev
+  yum: name=shadowsocks-libev state=latest update_cache=yes
