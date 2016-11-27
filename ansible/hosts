@@ -1,2 +1,1 @@
-[ss_server]
-server1 ansible_host=your_server_ip ansible_user=root_or_user_with_sudo ansible_port=22 ss_server_port=80
+hosts_example
