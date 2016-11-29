@@ -1,0 +1,24 @@
+# build deb package
+- name: Install shadowsocks-libev build tools
+  apt: name={{ item }} update_cache=yes install_recommends=no
+  with_items:
+    - build-essential
+    - autoconf
+    - libtool
+    - libssl-dev
+    - gawk
+    - debhelper
+    - dh-systemd
+    - init-system-helpers
+    - pkg-config
+    - asciidoc
+    - xmlto
+    - apg
+    - libpcre3-dev
+
+- name: Install supervisor to manage service
+  apt: name={{ item }}
+  with_items:
+    - curl
+    - git
+    - supervisor
