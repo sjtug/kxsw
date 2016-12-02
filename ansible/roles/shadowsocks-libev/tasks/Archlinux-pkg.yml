@@ -1,0 +1,3 @@
+---
+- name: install shadowsocks-libev
+  pacman: name=shadowsocks-libev state=latest update_cache=yes

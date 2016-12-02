@@ -1,0 +1,14 @@
+---
+- name: Use yum instead dnf for old RHEL
+  set_fact:
+    dist: "{% if ansible_distribution == 'Fedora' %}fedora{% else %}epel{% endif %}"
+    major_version: {{ ansible_distribution_major_version }}
+
+- name: Add repository for CentOS/RedHat
+  get_url:
+    url: https://copr.fedorainfracloud.org/coprs/librehat/shadowsocks/repo/{{ dist }}-{{ major_version }}/librehat-shadowsocks-{{ dist }}-{{ major_version }}.repo
+    dest: /etc/yum.repos.d/
+    mode: 0644
+
+- name: install shadowsocks-libev
+  yum: name=shadowsocks-libev state=latest update_cache=yes
