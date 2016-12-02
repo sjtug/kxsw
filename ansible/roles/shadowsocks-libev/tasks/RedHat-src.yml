@@ -1,1 +1,17 @@
----
+- name: Install epel-release
+  yum: name=epel-release state=latest update_cache=yes
+
+- name: Install shadowsocks-libev build tools
+  yum: name={{ item }} update_cache=yes
+  with_items:
+    - gcc 
+    - autoconf 
+    - libtool 
+    - automake 
+    - make 
+    - zlib-devel 
+    - openssl-devel 
+    - asciidoc 
+    - xmlto
+    - curl
+    - supervisor

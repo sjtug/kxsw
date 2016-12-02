@@ -10,5 +10,11 @@
     dest: /etc/yum.repos.d/
     mode: 0644
 
-- name: install shadowsocks-libev
-  yum: name=shadowsocks-libev state=latest update_cache=yes
+- name: Install epel-release
+  yum: name=epel-release state=latest update_cache=yes
+
+- name: Install shadowsocks-libev and supervisor
+  yum: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - shadowsocks-libev
+    - supervisor

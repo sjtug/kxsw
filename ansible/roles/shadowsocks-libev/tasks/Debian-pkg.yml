@@ -16,5 +16,8 @@
   when: (ansible_distribution == "Debian" and ansible_distribution_major_version == "7") or
         (ansible_distribution == "Ubuntu" and ansible_distribution_release == "natty")
 
-- name: Install shadowsocks-libev
-  apt: name=shadowsocks-libev state=latest update_cache=yes
+- name: Install shadowsocks-libev and supervisor
+  apt: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - shadowsocks-libev
+    - supervisor

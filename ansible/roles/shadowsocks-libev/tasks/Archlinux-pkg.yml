@@ -1,3 +1,6 @@
 ---
-- name: install shadowsocks-libev
-  pacman: name=shadowsocks-libev state=latest update_cache=yes
+- name: Install shadowsocks-libev and supervisor
+  pacman: name={{ item }} state=latest update_cache=yes
+  with_items:
+    - shadowsocks-libev
+    - supervisor
