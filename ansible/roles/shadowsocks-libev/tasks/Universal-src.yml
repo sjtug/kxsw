@@ -1,0 +1,35 @@
+---
+- name: Include OS-specific variables
+  include: "{{ ansible_os_family }}.yml"
+
+- name: Disable shadowsocks-libev service if exists
+  service: name=shadowsocks-libev state=stopped enabled=no
+  register: result
+  failed_when: "result|failed and ('no service' not in result.msg) and ('not find' not in result.msg)"
+
+- name: Download shadowsocks-libev GitHub latest release tag
+  shell: curl -Ls -w %{url_effective} -o /dev/null https://github.com/shadowsocks/shadowsocks-libev/releases/latest
+  register: release_link
+  when: release == "latest"
+
+- name: Override default release if set with latest
+  set_fact: release={{ release_link.stdout.split('/')[-1] }}
+  when: release == "latest"
+
+- name: Create shadowsocks-libev directory
+  file: path=/opt/shadowsocks-libev/{{ release }} state=directory mode=0755
+
+- name: Download release
+  get_url:
+    url: https://github.com/shadowsocks/shadowsocks-libev/archive/{{ release }}.tar.gz
+    dest: /opt/shadowsocks-libev/{{ release }}.tar.gz
+    mode: 0640
+
+- name: Unarchive remote source
+  unarchive: src=/opt/shadowsocks-libev/{{ release }}.tar.gz dest=/opt/shadowsocks-libev/{{ release }} remote_src=yes
+
+- name: Configure and make
+  shell: ./configure && make && make install chdir=/opt/shadowsocks-libev/{{ release }}/shadowsocks-libev-{{ release[1:] }}
+
+- name: Enable supervisor service
+  service: name=supervisor state=restarted enabled=yes
