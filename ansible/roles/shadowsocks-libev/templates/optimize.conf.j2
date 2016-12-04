@@ -46,5 +46,5 @@ net.ipv4.tcp_mtu_probing = 1
 # for low-latency network, use cubic instead
 #net.ipv4.tcp_congestion_control = cubic
 {% if tcp_congestion_control is defined %}
-net.ipv4.tcp_congestion_control = "{{ tcp_congestion_control }}",
+net.ipv4.tcp_congestion_control = "{{ tcp_congestion_control }}"
 {% endif %}
