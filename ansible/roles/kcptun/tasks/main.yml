@@ -1,0 +1,43 @@
+# kcptun
+- name: Download kcptun GitHub latest release tag
+  shell: curl -Ls -w %{url_effective} -o /dev/null https://github.com/xtaci/kcptun/releases/latest
+  register: kcptun_release_link
+  when: kcptun_release == "latest"
+
+- name: Override default release if set with latest
+  set_fact: kcptun_release={{ kcptun_release_link.stdout.split('/')[-1] }}
+  when: kcptun_release == "latest"
+
+- debug: var=kcptun_release
+
+- name: Create kcptun directory
+  file: path=/opt/kcptun/{{ kcptun_release }} state=directory mode=0755
+
+- name: Rename architecture
+  set_fact:
+    arch: "{% if ansible_architecture == 'x86_64' %}amd64{% elif ansible_architecture == 'i386' %}386{% elif ansible_architecture.startswith('arm') %}arm{% else %}unknown{% endif %}"
+
+- name: Download release
+  get_url:
+    url: https://github.com/xtaci/kcptun/releases/download/{{ kcptun_release }}/kcptun-{{ ansible_system | lower }}-{{ arch }}-{{ kcptun_release[1:] }}.tar.gz
+    dest: /opt/kcptun/{{ kcptun_release }}.tar.gz
+    mode: 0640
+  environment: "{{proxy_env}}"
+
+- name: Unarchive remote source
+  unarchive:
+    src: /opt/kcptun/{{ kcptun_release }}.tar.gz
+    dest: /opt/kcptun/{{ kcptun_release }}
+    remote_src: yes
+    owner: root
+    group: root
+
+- name: Rename with prefix kcptun_ and install to /usr/local/bin
+  shell: for filename in *; do cp "$filename" "/usr/local/bin/kcptun_$filename"; done; chdir=/opt/kcptun/{{ kcptun_release }}
+
+- name: Add symbol link for arm based arch(such as armv7l)
+  file: src=/usr/local/bin/{{ item.src }} dest=/usr/local/bin/{{ item.dest }} state=link
+  with_items:
+    - { src: 'kcptun_client_linux_arm{{ ansible_architecture[4] }}', dest: 'kcptun_client_linux_arm'}
+    - { src: 'kcptun_server_linux_arm{{ ansible_architecture[4] }}', dest: 'kcptun_server_linux_arm'}
+  when: ansible_architecture.startswith('arm')

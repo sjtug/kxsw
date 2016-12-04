@@ -1,0 +1,35 @@
+---
+# Set Archlinux with pkg force
+- name: Set install mode with package or source
+  set_fact:
+    ss_install_mode: "{% if ansible_os_family == 'Archlinux' %}pkg{% else %}src{% endif %}"
+  when: ss_install_mode is not defined or ansible_os_family == 'Archlinux'
+
+- name: Install OS specific with pkg/src install mode
+  include: "{{ ansible_os_family }}-{{ ss_install_mode }}.yml"
+
+- name: Build and install shadowsocks-libev with src install mode
+  include: Universal-src.yml
+  when: ss_install_mode == 'src'
+
+- name: Generate optimizing network sysctl conf
+  template: src=optimize.conf.j2 dest=/etc/sysctl.d/optimize_ss.conf mode=0644
+
+# can not change openvz kernel settings
+- name: Optimize network with sysctl
+  shell: sysctl -p /etc/sysctl.d/optimize_ss.conf
+  when: ansible_virtualization_type != 'openvz'
+
+- name: Create shadowsocks-libev config directory
+  file: path=/etc/shadowsocks-libev state=directory mode=0755
+
+- name: Generate server file
+  template: src=server.json.j2 dest=/etc/shadowsocks-libev/server.json mode=0640
+  when: ss_server_port is defined
+
+- name: Disable shadowsocks-libev service if exists
+  service: name=shadowsocks-libev state=stopped enabled=no
+  register: result
+  failed_when: "result|failed and ('no service' not in result.msg) and ('not find' not in result.msg)"
+  tags:
+    - ss_native_service

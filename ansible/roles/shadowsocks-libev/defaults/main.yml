@@ -1,0 +1,10 @@
+---
+# shadowsocks config
+ss_password: fuxxGFW!
+ss_encryption_method: aes-256-cfb
+ss_timeout: 60
+ss_fast_open: "true"
+ss_ipv6_first: "true"
+
+# shadowsocks-libev GitHub release
+ss_release: latest
