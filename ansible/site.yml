@@ -1,7 +1,12 @@
 ---
 - name: install shadowsocks-libev
-  hosts: ss_server
-  become: yes
-  become_method: sudo
+  hosts: all
+  become: true
   roles:
     - shadowsocks-libev
+
+- name: install kcptun
+  hosts: all
+  become: true
+  roles:
+    - kcptun
